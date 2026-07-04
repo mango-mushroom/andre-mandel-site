@@ -503,6 +503,22 @@
       goToDetail(current, vIndex[current] + delta);
     };
 
+    function peekHint(){
+      var el = detailTracks[0];
+      if(!el) return;
+      el.style.transition = 'transform 0.7s cubic-bezier(.4,0,.2,1)';
+      el.style.transform = 'translateY(-16%)';
+      setTimeout(function(){
+        el.style.transform = 'translateY(0%)';
+      }, 750);
+      setTimeout(function(){
+        el.style.transition = '';
+      }, 1500);
+    }
+    window.addEventListener('load', function(){
+      setTimeout(peekHint, 1000);
+    });
+
     var startX = 0, startY = 0, isDragging = false;
     track.addEventListener('touchstart', function(e){
       startX = e.touches[0].clientX;
