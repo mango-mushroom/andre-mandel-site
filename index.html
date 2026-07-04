@@ -3,7 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <title>André Mandel — Design Atelier</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#211f1c">
+<link rel="manifest" href="manifest.json">
 <style>
   :root{
     --graphite:#211f1c;
@@ -422,6 +427,19 @@
   </div>
 </div>
 <script>
+  (function(){
+    function tryFullscreen(){
+      var el = document.documentElement;
+      var request = el.requestFullscreen || el.webkitRequestFullscreen || el.msRequestFullscreen;
+      if(request){
+        request.call(el).catch(function(){});
+      }
+      document.removeEventListener('click', tryFullscreen);
+      document.removeEventListener('touchend', tryFullscreen);
+    }
+    document.addEventListener('click', tryFullscreen, {once:true});
+    document.addEventListener('touchend', tryFullscreen, {once:true});
+  })();
   (function(){
     window.switchView = function(name){
       ['projects','process','contact'].forEach(function(v){
