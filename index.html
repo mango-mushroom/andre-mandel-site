@@ -25,7 +25,7 @@
   }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    min-height: calc(100% + 1px);
+    min-height: calc(100% + 120px);
     overflow-x: hidden;
   }
   .device {
@@ -440,17 +440,21 @@
 <script>
   (function(){
     function hideToolbar(){
-      window.scrollTo(0, 1);
+      window.scrollTo(0, 60);
     }
     window.addEventListener('load', function(){
       hideToolbar();
       setTimeout(hideToolbar, 50);
+      setTimeout(hideToolbar, 150);
       setTimeout(hideToolbar, 300);
-      setTimeout(hideToolbar, 800);
+      setTimeout(hideToolbar, 600);
+      setTimeout(hideToolbar, 1000);
+      setTimeout(hideToolbar, 1500);
     });
     window.addEventListener('orientationchange', function(){
       setTimeout(hideToolbar, 100);
       setTimeout(hideToolbar, 400);
+      setTimeout(hideToolbar, 800);
     });
     document.addEventListener('touchend', hideToolbar, {once:true});
   })();
